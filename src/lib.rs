@@ -1,4 +1,4 @@
-use std::os::unix::net::Messages;
+// use std::os::unix::net::Messages;
 use std::sync::{Arc, mpsc, Mutex};
 use std::thread;
 
@@ -34,7 +34,7 @@ impl ThreadPool {
             F: FnOnce() + Send + 'static
     {
         let job = Box::new(f);
-        self.sender.send(Message::NewJob(Job)).unwrap()
+        self.sender.send(Message::NewJob(job)).unwrap()
     }
 }
 
